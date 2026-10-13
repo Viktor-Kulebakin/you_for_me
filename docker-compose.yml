@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_dating_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=dating_db
+      - POSTGRES_USER=dating_user
+      - POSTGRES_PASSWORD=dating_password
+    ports:
+      - "5433:5432"
+
+  web:
+    build: .
+    command: python src/manage.py runserver 0.0.0.0:8000 --noreload
+
+    volumes:
+      - .:/app
+      - dating_media:/app/src/media
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_NAME=dating_db
+      - DB_USER=dating_user
+      - DB_PASSWORD=dating_password
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      - db
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_dating_data:
+  dating_media:

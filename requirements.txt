@@ -1,0 +1,22 @@
+# --- КОРНЕНВОЙ ФРЕЙМВОРК И ИНСТРУМЕНТЫ ОКРУЖЕНИЯ ---
+Django>=5.0,<5.1
+django-environ
+
+# --- REST API И АВТОРИЗАЦИЯ ---
+djangorestframework
+djangorestframework-simplejwt
+django-filter
+django-cors-headers
+drf-spectacular
+
+# --- РАБОТА С МЕДИА И БАЗОЙ ДАННЫХ ---
+Pillow
+psycopg2-binary
+
+# --- АСИНХРОННЫЙ СЛОЙ (WEBSOCKET ЧАТЫ) ---
+daphne>=4.0.0
+channels>=4.0.0
+channels-redis>=4.0.0
+
+# --- СИД ДАННЫХ И ТЕСТИРОВАНИЕ ---
+Faker
